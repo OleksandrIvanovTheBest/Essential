@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Classes
 {
@@ -18,18 +19,24 @@ namespace Classes
             //2
             Console.WriteLine("Enter book title:");
             string tit = Console.ReadLine();
-            Title title = new Title();
-            title.TitleProperty = tit;
+            Title title = new Title
+            {
+                Name = tit
+            };
 
             Console.WriteLine("Enter author name:");
             string aut = Console.ReadLine();
-            Author author = new Author();
-            author.AuthorProperty = aut;
+            Author author = new Author
+            {
+                Name = aut
+            };
 
             Console.WriteLine("Enter content:");
             string con = Console.ReadLine();
-            Content content = new Content();
-            content.ContentProperty = con;
+            Content content = new Content
+            {
+                Text = con
+            };
 
             Book book = new Book(title, author, content);
             book.Show();
@@ -44,7 +51,7 @@ namespace Classes
 
             Console.WriteLine("Enter points name better A, B, C, D or E");
 
-            Point[] points = new Point[number];
+            List<Point> points = new List<Point>();
 
             for (int i = 0; i < number; ++i)
             {
@@ -52,44 +59,46 @@ namespace Classes
                 string nameP = Console.ReadLine();
 
                 Console.Write("Enter X coordinate: ");
-                int height = Int32.Parse(Console.ReadLine());
+                int x = Int32.Parse(Console.ReadLine());
 
                 Console.Write("Enter Y coordinate: ");
-                int width = Int32.Parse(Console.ReadLine());
+                int y = Int32.Parse(Console.ReadLine());
 
-                points[i] = new Point(height, width, nameP);
+                points.Add(new Point(x, y, nameP));
             }
 
             Figure figure;
 
             if (number == 3)
             {
-                figure = new Figure("triangle", points[0], points[1], points[2]);
-                figure.CalculatePerimeter();
-                figure.Show();
+                figure = new Figure(points[0], points[1], points[2]);
             }
             else if (number == 4)
             {
-                figure = new Figure("rectangle", points[0], points[1], points[2], points[3]);
-                figure.CalculatePerimeter();
-                figure.Show();
+                figure = new Figure(points[0], points[1], points[2], points[3]);
             }
             else if (number == 5)
             {
-                figure = new Figure("pentagon", points[0], points[1], points[2], points[3], points[4]);
-                figure.CalculatePerimeter();
-                figure.Show();
+                figure = new Figure(points[0], points[1], points[2], points[3], points[4]);
             }
+            else
+            {
+                figure = new Figure();
+            } 
+            figure.CalculatePerimeter();
+            figure.Show();
 
             Console.WriteLine();
             //4(additional task)
-            Address address = new Address();
-            address.Country = "Ukraine";
-            address.City = "Shostka";
-            address.Street = "Good";
-            address.House = 12;
-            address.Apartment = 102;
-            address.Index = 41100;
+            Address address = new Address
+            {
+                Country = "Ukraine",
+                City = "Shostka",
+                Street = "Good",
+                House = 12,
+                Apartment = 102,
+                Index = 41100
+            };
 
             address.ShowAdress();
 

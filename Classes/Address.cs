@@ -7,53 +7,53 @@ namespace Classes
     //4(additional task)
     class Address
     {
-        private int index, house, apartment;
-        private string country, city, street;
+        private int _index, _house, _apartment;
+        private string _country, _city, _street;
 
         public int Index
         {
-            get { return index; }
-            set { index = value; }
+            get { return _index; }
+            set { _index = value; }
         }
 
         public int House
         {
-            get { return house; }
-            set { house = value; }
+            get { return _house; }
+            set { _house = value; }
         }
 
         public int Apartment
         {
-            get { return apartment; }
-            set { apartment = value; }
+            get { return _apartment; }
+            set { _apartment = value; }
         }
 
         public string Country
         {
-            get { return country; }
-            set { country = value; }
+            get { return _country; }
+            set { _country = value; }
         }
 
         public string City
         {
-            get { return city; }
-            set { city = value; }
+            get { return _city; }
+            set { _city = value; }
         }
 
         public string Street
         {
-            get { return street; }
-            set { street = value; }
+            get { return _street; }
+            set { _street = value; }
         }
 
         public void ShowAdress()
         {
-            Console.WriteLine("Country   - {0}", country);
-            Console.WriteLine("City      - {0}", city);
-            Console.WriteLine("Street    - {0}", street);
-            Console.WriteLine("House     - {0}", house);
-            Console.WriteLine("Apartment - {0}", apartment);
-            Console.WriteLine("Index     - {0}", index);
+            Console.WriteLine("Country   - {0}", _country);
+            Console.WriteLine("City      - {0}", _city);
+            Console.WriteLine("Street    - {0}", _street);
+            Console.WriteLine("House     - {0}", _house);
+            Console.WriteLine("Apartment - {0}", _apartment);
+            Console.WriteLine("Index     - {0}", _index);
         }
     }
 }

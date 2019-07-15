@@ -19,11 +19,6 @@ namespace Classes
             get { return CalculatePerimeter(); }
         }
 
-        public Rectangle()
-        {
-            side1 = 0;
-            side2 = 0;
-        }
 
         public Rectangle(double side1, double side2)
         {

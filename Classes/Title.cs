@@ -7,24 +7,23 @@ namespace Classes
     //2
     internal class Title
     {
-        private string str_title;
-
-        public string TitleProperty
+        private string _name;
+        public string Name
         {
             get
             {
-                return str_title;
+                return _name;
             }
             set
             {
-                str_title = value;
+                _name = value;
             }
         }
 
         public void Show()
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(str_title);
+            Console.WriteLine(Name);
             Console.ForegroundColor = ConsoleColor.Gray;
         }
     }

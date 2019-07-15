@@ -7,22 +7,22 @@ namespace Classes
     //2
     internal class Book
     {
-        private Title title;
-        private Author author;
-        private Content content;
+        private readonly Title _title;
+        private readonly Author _author;
+        private readonly Content _content;
 
         public Book(Title title, Author author, Content content)
         {
-            this.title = title;
-            this.author = author;
-            this.content = content;
+            this._title = title;
+            this._author = author;
+            this._content = content;
         }
 
         public void Show()
         {
-            this.title.Show();
-            this.author.Show();
-            this.content.Show();
+            this._title.Show();
+            this._author.Show();
+            this._content.Show();
         }
     }
 }

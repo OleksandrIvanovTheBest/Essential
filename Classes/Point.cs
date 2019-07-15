@@ -7,29 +7,29 @@ namespace Classes
     //3
     internal class Point
     {
-        private int x, y;
-        private string namePoint;
+        private readonly int _x, _y;
+        private readonly string _name;
 
-        public int xPoint
+        public int X
         {
-            get { return x; }
+            get { return _x; }
         }
 
-        public int yPoint
+        public int Y
         {
-            get { return y; }
+            get { return _y; }
         }
 
-        public string NamePoint
+        public string Name
         {
-            get { return namePoint; }
+            get { return _name; }
         }
 
         public Point(int x, int y, string namePoint)
         {
-            this.x = x;
-            this.y = y;
-            this.namePoint = namePoint;
+            this._x = x;
+            this._y = y;
+            this._name = namePoint;
         }
     }
 }

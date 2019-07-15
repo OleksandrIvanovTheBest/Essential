@@ -7,24 +7,23 @@ namespace Classes
     //2
     internal class Content
     {
-        private string str_content;
-
-        public string ContentProperty
+        private string _text;
+        public string Text
         {
             get
             {
-                return str_content;
+                return _text;
             }
             set
             {
-                str_content = value;
+                _text = value;
             }
         }
 
         public void Show()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(str_content);
+            Console.WriteLine(Text);
             Console.ForegroundColor = ConsoleColor.Gray;
         }
     }
