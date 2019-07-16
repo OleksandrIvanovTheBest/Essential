@@ -8,46 +8,33 @@ namespace Classes2
     internal class Employee
     {
         private readonly string _name, _surname;
-        private string _position;
-        private double _experience, _tax_charge, _salary;
+        private const double _salary = 300;
+      
+        public string Position { get; set; }
 
-        public string Position
-        {
-            get { return _position; }
-            set { _position = value; }
-        }
+        public double Experience { get; set; }
 
-        public double Experience
-        {
-            get { return _experience; }
-            set { _experience = value; }
-        }
-
-        public double TaxCharge
-        {
-            get { return _tax_charge; }
-            set { _tax_charge = value; }
-        }
-
+        public double TaxCharge { get; set; }
+        
         public Employee(string name, string surname)
         {
             _name = name;
             _surname = surname;
         }
 
-        public void CalculationSalary(double salary)
+        public double CalculateSalary()
         {
-            _salary = _experience * (salary * _tax_charge);
+            return Experience * (_salary * TaxCharge);
         }
 
         public void Show()
         {
             Console.WriteLine("Name       - {0}", _name);
             Console.WriteLine("Surname    - {0}", _surname);
-            Console.WriteLine("Position   - {0}", _position);
-            Console.WriteLine("Experience - {0:#.###}", _experience);
-            Console.WriteLine("Tax_charge - {0:#.###}", _tax_charge);
-            Console.WriteLine("Slary      - {0:#.###}", _salary);
+            Console.WriteLine("Position   - {0}", Position);
+            Console.WriteLine("Experience - {0:#.###}", Experience);
+            Console.WriteLine("Tax_charge - {0:#.###}", TaxCharge);
+            Console.WriteLine("Slary      - {0:#.###}", CalculateSalary());
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace Classes2
 {
@@ -7,14 +8,13 @@ namespace Classes2
         static void Main(string[] args)
         {
             //1
-            Console.Write("Enter currency rates for convert to uah");
-            Console.WriteLine("(Fractional number is entered with \",\")");
-            Console.Write("usd(~26,08) - ");
-            double usd = double.Parse(Console.ReadLine());
-            Console.Write("eur(~29,4) - ");
-            double eur = double.Parse(Console.ReadLine());
-            Console.Write("rub(~0,42) - ");
-            double rub = double.Parse(Console.ReadLine());
+            Console.WriteLine("Enter currency rates for convert to uah");
+            Console.Write("usd(~26.08) - ");
+            double usd = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            Console.Write("eur(~29.4) - ");
+            double eur = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            Console.Write("rub(~0.42) - ");
+            double rub = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
             Converter convert = new Converter(usd, eur, rub);
 
@@ -33,8 +33,7 @@ namespace Classes2
                               "Ruble  - rub");
             string currency = Console.ReadLine();
             Console.Write("Enter money");
-            Console.WriteLine("(Fractional number is entered with \",\")");
-            double money = double.Parse(Console.ReadLine());
+            double money = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
             Console.Write("{0:#.###} {1} = ", money, currency);
 
@@ -62,10 +61,6 @@ namespace Classes2
                 TaxCharge = 0.05
             };
 
-            double salaryPerMonth = 500;
-
-            worker.CalculationSalary(salaryPerMonth);
-
             worker.Show();
             Console.WriteLine();
             //3
@@ -81,11 +76,10 @@ namespace Classes2
             Console.WriteLine("Sum with VAT = {0:#.###}", invoice.CalculeteWithVAT(cost));
             Console.WriteLine("Sum not  VAT = {0:#.###}", invoice.CalculeteNotVAT(cost));
             Console.WriteLine();
-
             //4(additional task)
-            User user = new User("axe", "Alex", "Axis", 30, "16.07.2019");
+            User user = new User("axe", "Alex", "Axis", 30, new DateTime(2059, 7, 16, 23, 08, 50));
             user.Show();
-
+ 
             Console.ReadLine();
         }
     }

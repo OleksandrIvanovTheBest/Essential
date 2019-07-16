@@ -16,34 +16,34 @@ namespace Classes2
             _rub = rub;
         }
 
-        public double UahToUsd(double uah)
+        public double UahToUsd(double uahValue)
         {
-            return uah / _usd;
+            return uahValue / _usd;
         }
 
-        public double UahToEur(double uah)
+        public double UahToEur(double uahValue)
         {
-            return uah / _eur;
+            return uahValue / _eur;
         }
 
-        public double UahToRub(double uah)
+        public double UahToRub(double uahValue)
         {
-            return uah / _rub;
+            return uahValue / _rub;
         }
 
-        public double UsdToUah(double usd)
+        public double UsdToUah(double usdValue)
         {
-            return _usd * usd;
+            return _usd * usdValue;
         }
 
-        public double EurToUah(double eur)
+        public double EurToUah(double eurValue)
         {
-            return _eur * eur;
+            return _eur * eurValue;
         }
 
-        public double RubToUah(double rub)
+        public double RubToUah(double rubValue)
         {
-            return _rub * rub;
+            return _rub * rubValue;
         }
     }
 }

@@ -11,16 +11,17 @@ namespace Classes2
         private readonly string _customer, _provider;
         private string _article;
         int _quantity;
+        private const double vat = 0.2;
 
         public string Article
         {
-            get { return _article; }
+            private get { return _article; }
             set { _article = value; }
         }
 
         public int Quantity
         {
-            get { return _quantity; }
+            private get { return _quantity; }
             set { _quantity = value; }
         }
 
@@ -33,11 +34,11 @@ namespace Classes2
 
         public double CalculeteWithVAT(double cost)
         {
-            return cost * _quantity + cost * _quantity * 0.2;
+            return cost * _quantity + cost * _quantity * vat;
         }
         public double CalculeteNotVAT(double cost)
         {
-            return cost * _quantity - cost * _quantity * 0.2;
+            return cost * _quantity - cost * _quantity * vat;
         }   
 
         public void Show()
