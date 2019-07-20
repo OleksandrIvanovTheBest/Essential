@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Inheritance
 {
@@ -28,12 +27,12 @@ namespace Inheritance
 
         public void Show()
         {
-            for (int i = 0; i < _pupil.Count; i++)
+            foreach(Pupil pupil in _pupil)
             {
-                _pupil[i].Study();
-                _pupil[i].Read();
-                _pupil[i].Write();
-                _pupil[i].Relax();
+                pupil.Study();
+                pupil.Read();
+                pupil.Write();
+                pupil.Relax();
                 Console.WriteLine();
             }
         }

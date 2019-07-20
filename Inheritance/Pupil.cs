@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Inheritance
 {
     //1
-    internal class Pupil
+    abstract internal class Pupil
     {
         public virtual void Study()
         {

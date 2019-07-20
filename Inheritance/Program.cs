@@ -94,15 +94,15 @@ namespace Inheritance
 
             Console.WriteLine();
             //4(additional task)
-            RedColor printerRed = new RedColor();
-            printerRed.Print("Hello!");
-
-            Printer printer = printerRed as Printer;
+            Printer printer = new Printer();
             printer.Print("Hello!");
 
-            RedColor printerRed2 = printer as RedColor;
-            printerRed2.Print("Hello!");
-          
+            RedPrinter redPrinter = new RedPrinter();
+            redPrinter.Print("Red!");
+
+            printer = redPrinter as Printer;
+            printer.Print("Red2!");
+
             Console.ReadLine();
         }
     }

@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Inheritance
 {
     //2
-    internal class Vehicle
+    abstract internal class Vehicle
     {
         private readonly int _x, _y, _year;
         private readonly double _price, _speed;

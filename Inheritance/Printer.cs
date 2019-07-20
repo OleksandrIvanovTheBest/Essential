@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Inheritance
 {
@@ -10,6 +8,7 @@ namespace Inheritance
         public virtual void Print(string value)
         {
             Console.WriteLine(value);
+            Console.ForegroundColor = ConsoleColor.Gray;
         }
     }
 }
