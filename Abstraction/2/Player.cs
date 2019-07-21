@@ -8,10 +8,12 @@ namespace Abstraction
         {
             Console.WriteLine("Play");
         }
+
         public void Record()
         {
             Console.WriteLine("Record");
         }
+
         void IPlayable.Pause()
         {
             Console.WriteLine("Pause Play");

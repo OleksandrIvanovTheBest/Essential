@@ -2,15 +2,12 @@
 
 namespace Abstraction
 {
-    internal class Author : Book
+    internal class Author : BookPart
     {
-        public string Name { get; set; }
-
         public override void Show()
         {
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine(Name);
-            Console.ForegroundColor = ConsoleColor.Gray;
+            base.Show();
         }
     }
 }
