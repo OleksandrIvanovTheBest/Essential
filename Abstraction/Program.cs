@@ -8,7 +8,6 @@ namespace Abstraction
         static void Main(string[] args)
         {
             //1
-            /*
             Console.Write("Enter number document: ");
             int number = Int32.Parse(Console.ReadLine());
             Console.Write("Document format\n" +
@@ -60,8 +59,7 @@ namespace Abstraction
             player2.Pause();
             player2.Stop();
 
-            Console.WriteLine();
-            */
+            Console.WriteLine();   
             //3
             Title title = new Title
             {
@@ -78,17 +76,8 @@ namespace Abstraction
                 Text = "Very long time ago!"
             };
 
-            List<BookPart> book = new List<BookPart>
-            {
-                title,
-                author,
-                content
-            };
-
-            foreach (BookPart boo in book)
-            {
-                boo.Show();
-            }
+            Book book = new Book(title, author, content);
+            book.Show();
 
             Console.ReadLine();
         }
