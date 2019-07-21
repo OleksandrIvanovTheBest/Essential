@@ -58,7 +58,35 @@ namespace Abstraction
             IRecodable player2 = player as IRecodable;
             player2.Pause();
             player2.Stop();
-          
+
+            Console.WriteLine();
+            //3
+            Title title = new Title
+            {
+                Name = "Good Book"
+            };
+
+            Author author = new Author
+            {
+                Name = "Saska"
+            };
+
+            Content content = new Content
+            {
+                Text = "Very long time ago!"
+            };
+
+            List<Book> book = new List<Book>();
+
+            book.Add(title);
+            book.Add(author);
+            book.Add(content);
+
+            foreach (Book boo in book)
+            {
+                boo.Show();
+            }
+
             Console.ReadLine();
         }
     }

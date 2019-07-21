@@ -12,13 +12,24 @@ namespace Abstraction
         {
             Console.WriteLine("Record");
         }
-        public void Pause()
+        void IPlayable.Pause()
         {
-            Console.WriteLine("Pause");
+            Console.WriteLine("Pause Play");
         }
-        public void Stop()
+
+        void IPlayable.Stop()
         {
-            Console.WriteLine("Stop");
+            Console.WriteLine("Stop Play");
+        }
+
+        void IRecodable.Pause()
+        {
+            Console.WriteLine("Pause Record");
+        }
+
+        void IRecodable.Stop()
+        {
+            Console.WriteLine("Stop Record");
         }
     }
 }
