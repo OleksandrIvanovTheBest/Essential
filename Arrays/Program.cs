@@ -21,18 +21,20 @@ namespace Arrays
 
             array.Show();
 
-            array.MaxArray();
-            array.MinArray();
-            array.SumArray();
-            array.AverageArray();
-            array.OddArray();
+            Console.WriteLine("Max     - {0:G}", array.Max);
+            Console.WriteLine("Min     - {0:G}", array.Min);
+            Console.WriteLine("Sum     - {0:G}", array.Sum);
+            Console.WriteLine("Average - {0:G}", array.Average);
+
+            array.OddElements.ForEach((element) => { Console.Write("{0} ", element); });
 
             Console.WriteLine();
             //2
+       
             Console.Write("Enter M matrix size(MxM): ");
             int M = Int32.Parse(Console.ReadLine());
 
-            MyMatrix matrix = new MyMatrix(M, M);
+            MyMatrix matrix = new MyMatrix(M, M);   
 
             for (int i = 0; i < M; i++)
             {
@@ -57,9 +59,8 @@ namespace Arrays
             store[3] = new Article("box", "Metro", 50);
             store[4] = new Article("notebook", "Novus", 30.5);
 
-
-            //Console.WriteLine(store[2]);
-            //Console.WriteLine(store[3]);
+            Console.WriteLine(store[2]);
+            Console.WriteLine(store[3]);
 
             Console.WriteLine(store["pencil"]);
             Console.WriteLine(store["house"]);
@@ -72,7 +73,7 @@ namespace Arrays
             Console.WriteLine(dictionary["книга"]);
             Console.WriteLine(dictionary["дом"]);
             Console.WriteLine(dictionary["ручка"]);
-            Console.WriteLine(dictionary["стiл"]);
+            Console.WriteLine(dictionary["стіл"]);
             Console.WriteLine(dictionary["карандаш"]);
             Console.WriteLine(dictionary["яблуко"]);
             Console.WriteLine(dictionary["солнце"]);
@@ -85,6 +86,7 @@ namespace Arrays
             {
                 Console.WriteLine(dictionary[i]);
             }
+
             Console.ReadLine();
         }
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Arrays
 {
@@ -26,6 +27,68 @@ namespace Arrays
             }
         }
 
+        public int Max
+        {
+            get
+            {
+                int max = this[0];
+                for (int i = 1; i < this.Size; ++i)
+                {
+                    if (max < this[i])
+                        max = this[i];
+                }
+                return max;
+            }
+        }
+
+        public int Min
+        {
+            get
+            {
+                int min = this[0];
+                for (int i = 1; i < this.Size; ++i)
+                {
+                    if (min > this[i])
+                        min = this[i];
+                }
+                return min;
+            }
+        }
+
+        public int Sum
+        {
+            get
+            {
+                int sum = 0;
+                Array.ForEach(_array, (element) => { sum += element; });
+                return sum;
+            }
+        }
+
+        public int Average
+        {
+            get
+            {
+                return Sum / Size;
+            }
+        }
+
+        public List<int> OddElements
+        {
+            get
+            {
+                List<int> list = new List<int>();
+                Array.ForEach(_array, (element) =>
+                {
+                    if (element % 2 != 0)
+                    {
+                        list.Add(element);
+                    }
+                });
+                return list;
+            }
+        }
+
         public MyArray(int size)
         {
             _array = new int[size];
@@ -36,60 +99,6 @@ namespace Arrays
             for (int i = 0; i < Size; i++)
             {
                 Console.Write("{0:G} ", _array[i]);
-            }
-            Console.WriteLine();
-        }
-
-        public void MaxArray()
-        {
-            int max = this[0];
-            for (int i = 1; i < this.Size; ++i)
-            {
-                if (max < this[i])
-                    max = this[i];
-            }
-            Console.WriteLine("Max in array {0:G}", max);
-        }
-
-        public void MinArray()
-        {
-            int min = this[0];
-            for (int i = 1; i < this.Size; ++i)
-            {
-                if (min > this[i])
-                    min = this[i];
-            }
-            Console.WriteLine("Min in array {0:G}", min);
-        }
-
-        public void SumArray()
-        {
-            int sum = 0;
-            for (int i = 0; i < this.Size; ++i)
-            {
-                sum += this[i];
-            }
-            Console.WriteLine("Sum of array elements {0:G}", sum);
-        }
-
-        public void AverageArray()
-        {
-            int average = 0;
-            for (int i = 0; i < this.Size; ++i)
-            {
-                average += this[i];
-            }
-            average = average / this.Size;
-            Console.WriteLine("Average of array elements {0:G}", average);
-        }
-
-        public void OddArray()
-        {
-            Console.WriteLine("Odd numbers from array:");
-            for (int i = 0; i < this.Size; ++i)
-            {
-                if (this[i] % 2 != 0)
-                    Console.Write("{0:G} ", this[i]);
             }
             Console.WriteLine();
         }

@@ -1,12 +1,14 @@
-﻿namespace Arrays
+﻿using System.Collections.Generic;
+
+namespace Arrays
 {
     interface IMethods
     {
         void Show();
-        void MaxArray();
-        void MinArray();
-        void SumArray();
-        void AverageArray();
-        void OddArray();
+        int Max { get; }
+        int Min { get; }
+        int Sum { get; }
+        int Average { get; }
+        List<int> OddElements { get; }
     }
 }
