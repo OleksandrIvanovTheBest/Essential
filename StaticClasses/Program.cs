@@ -12,7 +12,7 @@ namespace StaticClasses
             Console.Write("Please enter word for search: ");
             string find = Console.ReadLine();
 
-            find.FindNext(book);
+            book.FindNext(find);
 
             Console.WriteLine();
             //2

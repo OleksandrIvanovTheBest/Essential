@@ -4,7 +4,7 @@ namespace StaticClasses
 {
     internal static class FindAndReplaceManager
     {
-        public static void FindNext(this string str, Book book)
+        public static void FindNext(this Book book, string str)
         {
             if (book.Text.Contains(str))
             {
