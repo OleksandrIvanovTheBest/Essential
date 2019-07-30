@@ -1,6 +1,6 @@
 ﻿namespace Structures2
 {
-    enum EnumPost : int
+    enum EnumPost
     {
         Trainee = 30,
         Junior = 40,

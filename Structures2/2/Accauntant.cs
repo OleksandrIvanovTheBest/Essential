@@ -4,24 +4,8 @@ namespace Structures2
 {
     internal class Accauntant
     {
-        private readonly EnumPost _post;
-        private readonly int _hours;
-
-        public EnumPost Post
-        {
-            get
-            {
-                return _post;
-            }        
-        }
-
-        public int Hours
-        {
-            get
-            {
-                return _hours;
-            }
-        }
+        public readonly EnumPost _post;
+        public readonly int _hours;
 
         public Accauntant(EnumPost post, int hours)
         {

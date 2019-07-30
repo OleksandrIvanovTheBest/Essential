@@ -12,41 +12,39 @@ namespace Structures2
             Color.Print("Hello!", 5);
             Color.Print("Hello!", 2);
             //2
-            const int count = 4;
+            
+            Accauntant[] workers =
+            {
+                new Accauntant(EnumPost.Trainee, 20),
+                new Accauntant(EnumPost.Junior, 45),
+                new Accauntant(EnumPost.Middle, 50),
+                new Accauntant(EnumPost.Senior, 55)
+            };
 
-            Accauntant[] workers = new Accauntant[count];
-
-            workers[0] = new Accauntant(EnumPost.Trainee, 20);
-            workers[1] = new Accauntant(EnumPost.Junior, 45);
-            workers[2] = new Accauntant(EnumPost.Middle, 50);
-            workers[3] = new Accauntant(EnumPost.Senior, 55);
-
-            bool hasPremium = false;
             foreach (Accauntant worker in workers)
             {
-                if (hasPremium = Accauntant.AskForBonus(worker.Post, worker.Hours))
+                if (Accauntant.AskForBonus(worker.post, worker.hours))
                 {
                     Console.WriteLine("{0} - worked {1} hours, and will take a premium",
-                                worker.Post, worker.Hours);
+                                worker.post, worker.hours);
                 }
                 else
                 {
                     Console.WriteLine("{0} - worked {1} hours, and will not take a premium",
-                                worker.Post, worker.Hours);
+                                worker.post, worker.hours);
                 }
             }
             //3
-            DateTime nowTime = DateTime.Now;
-            Console.WriteLine("Now time is " + nowTime.ToShortDateString());
+            Console.WriteLine("Now time is " + DateTime.Now.ToShortDateString());
 
             DateTime myBirthday = new DateTime(1992, 6, 28);
             Console.WriteLine("My bithday is " + myBirthday.ToShortDateString());
 
-            DateTime myBirthdayNext = new DateTime(nowTime.Year + 1, 6, 28);
+            DateTime myBirthdayNext = new DateTime(DateTime.Now.Year + 1, 6, 28);
                     
-            double days = -(nowTime - myBirthdayNext).TotalDays;
+            double days = (myBirthdayNext - DateTime.Now).TotalDays;
             Console.WriteLine("For next birthday {0} days!", (int)days);
-           
+          
             Console.ReadLine();
         }
     }
