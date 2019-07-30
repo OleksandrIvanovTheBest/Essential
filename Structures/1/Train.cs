@@ -4,17 +4,22 @@ namespace Structures
 {
     internal struct Train
     {
-        public string Destination { get; set; }
-
-        public int Number { get; set; }
-
-        public DateTime Time { get; set; }
+        private readonly string _destination;
+        public readonly int number;
+        private readonly DateTime _time;
+        
+        public Train(string destination, int number, DateTime time)
+        {
+            _destination = destination;
+            this.number = number;
+            _time = time;
+        }
 
         public void Show()
         {
-            Console.WriteLine("Destination - {0}", Destination);
-            Console.WriteLine("Train number - {0:G}", Number);
-            Console.WriteLine(Time);
+            Console.WriteLine("Destination - {0}", _destination);
+            Console.WriteLine("Train number - {0:G}", number);
+            Console.WriteLine(_time.ToShortDateString());
         }
     }
 }

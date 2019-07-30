@@ -18,10 +18,10 @@ namespace Structures
             for (int i = 0; i < count; i++)
             {
                 Console.Write("Enter destination: ");
-                trains[i].Destination = Console.ReadLine();
+                string dest = Console.ReadLine();
 
                 Console.Write("Enter train number: ");
-                trains[i].Number = int.Parse(Console.ReadLine());
+                int numb = int.Parse(Console.ReadLine());
 
                 Console.WriteLine("Enter date time: ");
                 Console.Write("year - ");
@@ -30,7 +30,8 @@ namespace Structures
                 month = int.Parse(Console.ReadLine());
                 Console.Write("day - ");
                 day = int.Parse(Console.ReadLine());
-                trains[i].Time = new DateTime(year, month, day);
+
+                trains[i] = new Train(dest, numb, new DateTime(year, month, day));
             }
 
             Console.WriteLine();
@@ -38,22 +39,29 @@ namespace Structures
             Console.Write("Enter train number: ");
             int number = int.Parse(Console.ReadLine());
 
+            bool hasFoundValue = false;
             foreach (Train train in trains)
             {
-                if (number == train.Number)
+                if (number == train.number)
                 {
                     train.Show();
+                    hasFoundValue = true;
                 }
             }
-            //Console.WriteLine("There is no such train");
+            if (!hasFoundValue)
+                Console.WriteLine("Train does not exist");
 
             Console.WriteLine();
             //2
-            MyClass myClass = new MyClass();
-            myClass.change = "not changed";
+            MyClass myClass = new MyClass
+            {
+                change = "not changed"
+            };
 
-            MyStruct myStruct = new MyStruct();
-            myStruct.change = "not changed";
+            MyStruct myStruct = new MyStruct
+            {
+                change = "not changed"
+            };
 
             Console.WriteLine("MyClass");
 
@@ -72,7 +80,7 @@ namespace Structures
             NoteBook noteBook = new NoteBook("Z200", "HP", 20000);
 
             noteBook.Show();
-
+            
             Console.ReadLine();
         }
 
