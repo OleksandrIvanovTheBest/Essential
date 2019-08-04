@@ -17,22 +17,13 @@ namespace Generics
             myList1.Add(0);
             myList1.Add(3);
 
-            foreach (int item in myList1)
-            {
-                Console.Write("{0} ", item);
-            }
-
-            Console.WriteLine();
-
-            myList1.Show();
+            Show(myList1);
 
             MyList<int> myList2 = new MyList<int>(new int[] { 1, 3, 4, 9 });
-
-            myList2.Show();
+            Show(myList2);
 
             myList2.AddRange(new int[] { 8, 8, 8, 8 });
-
-            myList2.Show();
+            Show(myList2);
 
             Console.WriteLine();
             //2
@@ -85,8 +76,15 @@ namespace Generics
             {
                 Console.WriteLine(bDouble);
             }
+        }
 
-            Console.ReadLine();
+        private static void Show(IEnumerable collection)
+        {
+            foreach (int item in collection)
+            {
+                Console.Write("{0} ", item);
+            }
+            Console.WriteLine();
         }
     }
 }

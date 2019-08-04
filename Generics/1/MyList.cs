@@ -45,15 +45,6 @@ namespace Generics
             InitializeCollection(collection);
         }
        
-        public void Show()
-        {
-            for (int i = 0; i < Count; i++)
-            {
-                Console.Write("{0} ", _value[i]);
-            }
-            Console.WriteLine();
-        }
-
         private void IncreaseArrayLength(int item = 1)
         {
             Array.Resize(ref _value, Count + item);
@@ -77,11 +68,12 @@ namespace Generics
         private int GetCount(IEnumerable<T> collection)
         {
             int size = 0;
-        
-            while (collection.GetEnumerator().MoveNext())
+
+            IEnumerator<T> enumerator = collection.GetEnumerator();
+            while (enumerator.MoveNext())
                 size++;
 
-            collection.GetEnumerator().Reset();
+            enumerator.Reset();
 
             return size;
         }
