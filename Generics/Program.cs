@@ -17,19 +17,15 @@ namespace Generics
             myList1.Add(0);
             myList1.Add(3);
 
-            //for foreach - need to contain public instance
-            //definition for 'GetEnumerator'
-            //for (int i = 0; i < myList1.Count; i++)
-            //{
-            //    Console.Write("{0} ", myList1[i]);
-            //}
-            //Console.WriteLine();
+            foreach (int item in myList1)
+            {
+                Console.Write("{0} ", item);
+            }
 
-            //implemented a helper method Show()  instead of a loop for
+            Console.WriteLine();
+
             myList1.Show();
 
-            //I can’t implement such a construct
-            //MyList<int> myList3 = new MyList<int> { 1, 3, 4, 9 };
             MyList<int> myList2 = new MyList<int>(new int[] { 1, 3, 4, 9 });
 
             myList2.Show();
@@ -67,6 +63,8 @@ namespace Generics
             {
                 Console.WriteLine(myDictionary[i]);
             }
+
+            Console.WriteLine();
             //3
             Array.ForEach(myList2.GetArray(), Console.Write);
 

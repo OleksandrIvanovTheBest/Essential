@@ -4,9 +4,8 @@ using System.Collections.Generic;
 
 namespace Generics
 {
-    internal class MyList<T>
+    internal class MyList<T> : IEnumerable<T>
     {
-        //readonly not needed if you need to implement insert and delete
         private T[] _value = null;
 
         public int Count
@@ -37,7 +36,7 @@ namespace Generics
 
         public void Add(T item)
         {
-            PlusItems(1);
+            IncreaseArrayLength();
             _value[Count - 1] = item;
         }
 
@@ -55,30 +54,46 @@ namespace Generics
             Console.WriteLine();
         }
 
-        private void PlusItems(int item)
+        private void IncreaseArrayLength(int item = 1)
         {
             Array.Resize(ref _value, Count + item);
         }
 
         private void InitializeCollection(IEnumerable<T> collection)
         {
-            //IEnumerator<T> ie = collection.GetEnumerator();
             IEnumerator ie = collection.GetEnumerator();
-            int size = 0;
-            //the length of the collection
-            while (ie.MoveNext())
-                size++;
-
-            ie.Reset();
-
+           
             int oldCount = Count;
-            PlusItems(size);
+            IncreaseArrayLength(GetCount(collection));
 
             for (int i = oldCount; i < Count && ie.MoveNext(); i++)
             {
                 _value[i] = (T)ie.Current;
             }
+
             ie.Reset();
+        }
+
+        private int GetCount(IEnumerable<T> collection)
+        {
+            int size = 0;
+        
+            while (collection.GetEnumerator().MoveNext())
+                size++;
+
+            collection.GetEnumerator().Reset();
+
+            return size;
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            return ((IEnumerable<T>)_value).GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
         }
     }
 }
