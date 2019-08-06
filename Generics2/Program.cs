@@ -9,7 +9,7 @@ namespace Generics2
         static void Main(string[] args)
         {
             //1
-            CarCollection<Dictionary<int, string>> carCollection = new CarCollection<Dictionary<int, string>>();
+            CarCollection<Car> carCollection = new CarCollection<Car>();
             carCollection.Add(1992, "Honda");
             carCollection.Add(2001, "Subaru");
             carCollection.Add(2015, "Pego");
@@ -20,7 +20,7 @@ namespace Generics2
 
             carCollection.Show();
 
-            carCollection.Remove();
+            carCollection.RemoveCollection();
 
             Console.WriteLine(carCollection[2001]);
 

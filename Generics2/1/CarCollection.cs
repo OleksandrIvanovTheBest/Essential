@@ -1,21 +1,25 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 
 namespace Generics2
 {
-    internal class CarCollection<T> where T : IDictionary
+    internal class CarCollection<T> where T : Car
     {
-        private readonly Dictionary<int, string> _cars = null;
-
-        public int Count => _cars.Count;
+        private Car[] _cars = null;
+        
+        public int Count
+        {
+            get
+            {
+                return _cars.Length;
+            }
+        }
 
         public string this[int key]
         {
             get
             {
-                if (_cars.ContainsKey(key))
-                    return _cars[key];
+                if (ContainsKey(key))
+                    return _cars[GetIndexKey(key)].name;
                 else
                     return string.Format("{0} - no car this year in collection", key);
             }
@@ -23,25 +27,47 @@ namespace Generics2
 
         public CarCollection()
         {
-            _cars = new Dictionary<int, string>();
+            _cars = new Car[0];
+        }
+
+        private bool ContainsKey(int key)
+        {
+            return GetIndexKey(key) == -1 ? false : true;
+        }
+
+        private int GetIndexKey(int key)
+        {
+            for (int i = 0; i < Count; i++)
+            {
+                if (_cars[i].year == key)
+                    return i;
+            }
+            return -1;
         }
 
         public void Add(int key, string value)
         {
-            _cars.Add(key, value);
+            IncreaseArrayLength();
+            _cars[Count - 1] = new Car(key, value);
+        }
+
+        private void IncreaseArrayLength(int item = 1)
+        {
+            Array.Resize(ref _cars, Count + item);
         }
 
         public void Show()
         {
-            foreach (KeyValuePair<int, string> keyValue in _cars)
+            foreach (Car value in _cars)
             {
-                Console.WriteLine(keyValue.Key + " - " + keyValue.Value);
+                Console.WriteLine(value.year + " - " + value.name);
             }
         }
 
-        public void Remove()
+        public void RemoveCollection()
         {
-            _cars.Clear();
+            if (Count > 0)
+                _cars = new Car[0];
         }
     }
 }
