@@ -4,8 +4,8 @@ namespace Generics2
 {
     internal class CarCollection<T> where T : Car
     {
-        private Car[] _cars = null;
-        
+        private T[] _cars = null;
+
         public int Count
         {
             get
@@ -27,7 +27,7 @@ namespace Generics2
 
         public CarCollection()
         {
-            _cars = new Car[0];
+            _cars = new T[0];
         }
 
         private bool ContainsKey(int key)
@@ -45,10 +45,10 @@ namespace Generics2
             return -1;
         }
 
-        public void Add(int key, string value)
+        public void Add(T car)
         {
             IncreaseArrayLength();
-            _cars[Count - 1] = new Car(key, value);
+            _cars[Count - 1] = car;
         }
 
         private void IncreaseArrayLength(int item = 1)
@@ -58,7 +58,7 @@ namespace Generics2
 
         public void Show()
         {
-            foreach (Car value in _cars)
+            foreach (T value in _cars)
             {
                 Console.WriteLine(value.year + " - " + value.name);
             }
@@ -67,7 +67,7 @@ namespace Generics2
         public void RemoveCollection()
         {
             if (Count > 0)
-                _cars = new Car[0];
+                _cars = new T[0];
         }
     }
 }

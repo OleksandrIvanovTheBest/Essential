@@ -1,6 +1,6 @@
 ﻿namespace Generics2
 {
-    internal class Car
+    internal abstract class Car
     {
         public readonly int year;
         public readonly string name;

@@ -10,9 +10,10 @@ namespace Generics2
         {
             //1
             CarCollection<Car> carCollection = new CarCollection<Car>();
-            carCollection.Add(1992, "Honda");
-            carCollection.Add(2001, "Subaru");
-            carCollection.Add(2015, "Pego");
+
+            carCollection.Add(new Honda(1992, "Honda"));
+            carCollection.Add(new Subaru(2001, "Subaru"));
+            carCollection.Add(new Pego(2015, "Pego"));
 
             Console.WriteLine(carCollection[2001]);
 
