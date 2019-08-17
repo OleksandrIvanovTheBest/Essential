@@ -25,9 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Generics", "Generics\Generi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Generics2", "Generics2\Generics2.csproj", "{721BE2B1-967D-4383-BA7D-3415994AECBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collections", "Collections\Collections.csproj", "{EF2B444F-55B2-42E3-BA2A-621EAE8BCD07}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exceptions", "Exceptions\Exceptions.csproj", "{AB8101E2-30AF-46E2-A764-AC08915B863C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Collections", "Collections\Collections.csproj", "{EF2B444F-55B2-42E3-BA2A-621EAE8BCD07}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,10 +81,6 @@ Global
 		{EF2B444F-55B2-42E3-BA2A-621EAE8BCD07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF2B444F-55B2-42E3-BA2A-621EAE8BCD07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF2B444F-55B2-42E3-BA2A-621EAE8BCD07}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AB8101E2-30AF-46E2-A764-AC08915B863C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AB8101E2-30AF-46E2-A764-AC08915B863C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AB8101E2-30AF-46E2-A764-AC08915B863C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AB8101E2-30AF-46E2-A764-AC08915B863C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
