@@ -4,13 +4,13 @@ namespace Structures2
 {
     internal class Accauntant
     {
-        public readonly EnumPost _post;
-        public readonly int _hours;
+        public readonly EnumPost post;
+        public readonly int hours;
 
         public Accauntant(EnumPost post, int hours)
         {
-            _post = post;
-            _hours = hours;
+            this.post = post;
+            this.hours = hours;
         }
 
         public static bool AskForBonus(EnumPost worker, int hours)
