@@ -23,7 +23,7 @@ namespace Structures2
 
         public void Show()
         {
-            Console.WriteLine("{0} worked {1} hours", Post, Hours);
+            Console.WriteLine("{0} worked {1} hours", post, hours);
         }
     }
 }
