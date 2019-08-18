@@ -30,7 +30,7 @@
         public override bool Equals(object item)
         {
             Block block = item as Block;
-            if (block != null)
+            if (block is Block)
             {
                 if (block._a == _a &&
                     block._b == _b &&

@@ -19,7 +19,7 @@ namespace Operators
             Console.WriteLine("block1 == block2 = {0}", block1 == block3);
 
             Console.WriteLine();
-            //2
+            //2   
             House houseOriginal = new House(100, 200);
             House houseClone = houseOriginal.Clone() as House;
 
@@ -68,7 +68,7 @@ namespace Operators
 
             Console.WriteLine(date2 - date1);
 
-            Console.WriteLine(date2 + 30);
+            Console.WriteLine(date2 + 1100);
 
             Console.WriteLine();
             //4

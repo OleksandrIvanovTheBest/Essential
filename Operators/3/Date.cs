@@ -1,4 +1,6 @@
-﻿namespace Operators
+﻿using System;
+
+namespace Operators
 {
     internal class Date
     {
@@ -11,6 +13,13 @@
             this.day = day;
         }
 
+        public Date(DateTime dt)
+        {
+            year = dt.Year;
+            month = dt.Month;
+            day = dt.Day;
+        }
+
         public static Date operator -(Date d1, Date d2)
         {
             return new Date(d1.year - d2.year, d1.month - d2.month, d1.day - d2.day);
@@ -18,13 +27,11 @@
 
         public static Date operator +(Date d1, int days)
         {
-            if ((d1.day + days) > 32)
-            {
-                d1.day = 31;
-                d1.month++;
-            }
+            DateTime dt = new DateTime(d1.year, d1.month, d1.day);
 
-            return new Date(d1.year, d1.month, d1.day);
+            dt = dt.AddDays(days);
+
+            return new Date(dt);
         }
 
         public override string ToString()

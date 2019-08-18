@@ -1,7 +1,11 @@
 ﻿using System;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Operators
 {
+    [Serializable]
     internal class House : ICloneable
     {
         public int width, height;
@@ -27,9 +31,20 @@ namespace Operators
 
         public object Clone()
         {
-            return this.MemberwiseClone();
+            using (MemoryStream stream = new MemoryStream())
+            { 
+                if (!this.GetType().IsSerializable)
+                {
+                    throw new SerializationException("No serializable atribute!");
+                }
+
+                BinaryFormatter formatter = new BinaryFormatter();
+                formatter.Serialize(stream, this);
+                stream.Position = 0;
+
+                return formatter.Deserialize(stream);
+            }
         }
-        //return new House(width, height) as object;
         public override string ToString()
         {
             return "Width: " + width + " Height: " + height;
