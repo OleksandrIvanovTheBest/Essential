@@ -6,13 +6,13 @@ namespace Collections
 {
     internal class MyList<T> : IEnumerable<T>
     {
-        private T[] _value = null;
+        private T[] values = null;
 
         public int Count
         {
             get
             {
-                return _value.Length;
+                return values.Length;
             }
         }
 
@@ -20,13 +20,13 @@ namespace Collections
         {
             get
             {
-                return _value[index];
+                return values[index];
             }
         }
 
         public MyList()
         {
-            _value = new T[0];
+            values = new T[0];
         }
 
         public MyList(IEnumerable<T> collection) : this()
@@ -37,7 +37,7 @@ namespace Collections
         public void Add(T item)
         {
             IncreaseArrayLength();
-            _value[Count - 1] = item;
+            values[Count - 1] = item;
         }
 
         public void AddRange(IEnumerable<T> collection)
@@ -47,7 +47,7 @@ namespace Collections
 
         private void IncreaseArrayLength(int item = 1)
         {
-            Array.Resize(ref _value, Count + item);
+            Array.Resize(ref values, Count + item);
         }
 
         private void InitializeCollection(IEnumerable<T> collection)
@@ -59,7 +59,7 @@ namespace Collections
 
             for (int i = oldCount; i < Count && ie.MoveNext(); i++)
             {
-                _value[i] = (T)ie.Current;
+                values[i] = (T)ie.Current;
             }
 
             ie.Reset();
@@ -80,7 +80,7 @@ namespace Collections
 
         public IEnumerator<T> GetEnumerator()
         {
-            return ((IEnumerable<T>)_value).GetEnumerator();
+            return ((IEnumerable<T>)values).GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
