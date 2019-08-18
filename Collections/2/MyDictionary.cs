@@ -24,7 +24,7 @@ namespace Collections
                 {
                     return _keyValuePairs[GetIndexKey(key)].Value;
                 }
-                throw new ArgumentOutOfRangeException("index parameter is out of range.");
+                throw new ArgumentOutOfRangeException("index parameter is out of range");
             }
         }
 
@@ -73,32 +73,5 @@ namespace Collections
         {
             return this as IEnumerator;
         }
-
-        //Or use yield
-        /*
-        int position = -1;
-
-        public void Reset()
-        {
-            position = -1;
-        }
-
-        public IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator()
-        {
-            while (true)
-            {
-                if (position < Count - 1)
-                {
-                    position++;
-                    yield return _keyValuePairs[position];
-                }
-                else
-                {
-                    Reset();
-                    yield break;  // Выход из цикла.       
-                }
-            }
-        }
-        */
     }
 }
