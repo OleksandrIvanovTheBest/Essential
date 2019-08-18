@@ -17,16 +17,6 @@ namespace Exceptions
             workers[3] = new Worker("Abrasyan", "AB", "senior", 1995);
             workers[4] = new Worker("Zuravko", "VD", "essential", 2001);
 
-            //Sort struct by surname
-            Array.Sort(workers, new Comparison<Worker>((c, d) => c.surname.CompareTo(d.surname)));
-
-            foreach (Worker worker in workers)
-            {
-                worker.Show();
-            }
-
-            Console.WriteLine();
-
             Console.WriteLine("Enter your surname");
             string surname = Console.ReadLine();
 
@@ -57,17 +47,7 @@ namespace Exceptions
                 new Price("Tide", "Novus", 50)
             };
 
-            //sort struct product by magazine
-            Array.Sort(products, new Comparison<Price>((c, d) => c.magazine.CompareTo(d.magazine)));
-
-            foreach (Price product in products)
-            {
-                product.Show();
-            }
-
             string productName = "Mulo";
-
-            Exception ex = new Exception("Product does not exist");
 
             try
             {
@@ -81,7 +61,7 @@ namespace Exceptions
                     }
                 }
                 if (!hasFoundValue)
-                    throw ex;
+                    throw new Exception("Product does not exist"); ;
             }
             catch (Exception e)
             {
