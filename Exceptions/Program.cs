@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Exceptions
 {
@@ -16,6 +17,13 @@ namespace Exceptions
             workers[2] = new Worker("Ivanchenko", "TT", "middle", 1998);
             workers[3] = new Worker("Abrasyan", "AB", "senior", 1995);
             workers[4] = new Worker("Zuravko", "VD", "essential", 2001);
+
+            workers = workers.OrderBy(x => x.surname).ToArray();
+
+            foreach (Worker worker in workers)
+            {
+                worker.Show();
+            }
 
             Console.WriteLine("Enter your surname");
             string surname = Console.ReadLine();
@@ -47,6 +55,13 @@ namespace Exceptions
                 new Price("Tide", "Novus", 50)
             };
 
+            products = products.OrderBy(x => x.magazine).ToArray();
+
+            foreach (Price product in products)
+            {
+                product.Show();
+            }
+
             string productName = "Mulo";
 
             try
@@ -61,11 +76,11 @@ namespace Exceptions
                     }
                 }
                 if (!hasFoundValue)
-                    throw new Exception("Product does not exist"); ;
+                    throw new MyException(); ;
             }
-            catch (Exception e)
+            catch (MyException e)
             {
-                Console.WriteLine(e.Message);
+                e.Method();
             }
 
             Console.WriteLine();
