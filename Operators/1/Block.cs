@@ -29,12 +29,13 @@
 
         public override bool Equals(object item)
         {
-            if (item is Block)
+            Block block = item as Block;
+            if (block != null)
             {
-                if (((Block)item)._a == _a &&
-                    ((Block)item)._b == _b &&
-                    ((Block)item)._c == _c &&
-                    ((Block)item)._d == _d)
+                if (block._a == _a &&
+                    block._b == _b &&
+                    block._c == _c &&
+                    block._d == _d)
                     return true;
             }
             return false;

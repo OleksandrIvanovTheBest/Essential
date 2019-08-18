@@ -27,9 +27,9 @@ namespace Operators
 
         public object Clone()
         {
-            return new House(width, height) as object;
+            return this.MemberwiseClone();
         }
-
+        //return new House(width, height) as object;
         public override string ToString()
         {
             return "Width: " + width + " Height: " + height;
