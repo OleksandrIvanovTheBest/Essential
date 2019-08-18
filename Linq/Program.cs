@@ -46,11 +46,11 @@ namespace Linq
                                        car => car.Model,
                                        (cus, car) => new
                                        {
-                                           Model = cus.Model,
-                                           Name = cus.Name,
-                                           Phone = cus.Phone,
-                                           Mark = car.Mark,
-                                           Year = car.Year
+                                           cus.Model,
+                                           cus.Name,
+                                           cus.Phone,
+                                           car.Mark,
+                                           car.Year
                                        }).Where(cusName => cusName.Name == "Sasha");
 
             foreach (var item in query)
