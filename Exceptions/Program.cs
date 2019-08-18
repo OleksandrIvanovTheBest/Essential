@@ -76,11 +76,11 @@ namespace Exceptions
                     }
                 }
                 if (!hasFoundValue)
-                    throw new MyException(); ;
+                    throw new MyException("Product does not exist!"); ;
             }
             catch (MyException e)
             {
-                e.Method();
+                Console.WriteLine(e.Message);
             }
 
             Console.WriteLine();

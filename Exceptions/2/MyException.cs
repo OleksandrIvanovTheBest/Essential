@@ -4,9 +4,8 @@ namespace Exceptions
 {
     class MyException : Exception
     {
-        public void Method()
+        public MyException(string message) : base(message)
         {
-            Console.WriteLine("Product does not exist");
         }
     }
 }
