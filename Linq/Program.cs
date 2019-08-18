@@ -41,19 +41,17 @@ namespace Linq
                 },
             };
 
-            var query = from customer in customers
-                        join car in cars
-                        on customer.Model equals car.Model
-                        where customer.Name == "Sasha"
-                        select new
-                        {
-                            Model = customer.Model,
-                            Name = customer.Name,
-                            Phone = customer.Phone,
-                            Mark = car.Mark,
-                            Year = car.Year
-                        };
-
+            var query = customers.Join(cars,
+                                       cus => cus.Model,
+                                       car => car.Model,
+                                       (cus, car) => new
+                                       {
+                                           Model = cus.Model,
+                                           Name = cus.Name,
+                                           Phone = cus.Phone,
+                                           Mark = car.Mark,
+                                           Year = car.Year
+                                       }).Where(cusName => cusName.Name == "Sasha");
 
             foreach (var item in query)
             {
