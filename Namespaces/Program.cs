@@ -2,7 +2,7 @@
 using Collections;
 using System.Collections.Generic;
 
-namespace Namespace
+namespace Namespaces
 {
     class Program
     {
@@ -24,7 +24,7 @@ namespace Namespace
 
             Console.WriteLine();
             //2
-            MyDictionary<int, string> positions = new MyDictionary<int, string>();
+            var positions = new MyDictionaryChild<int, string>();
 
             positions.Add(1, "Trainee");
             positions.Add(3, "Junior");
