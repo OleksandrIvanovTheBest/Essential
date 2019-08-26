@@ -7,39 +7,69 @@ namespace Threads
 {
     internal class Matrix
     {
-        const int size = 8;
+        const string chars = "$%#@!*abcdefghijklmnopqrstuvwxyz1234567890?ABCDEFGHIJKLMNOPQRSTUVWXYZ^&";
+
         private static int consoleWidth = Console.WindowWidth;
         private static int consoleHeight = Console.WindowHeight;
+        private static object lockObject = new object();
 
-
-
-        static object lockObject = new object();
-
-        private char[] testMas = new char[6];
+        private static Random rand = new Random();
 
         public Matrix()
         {
-           
+            Console.CursorVisible = false;
+            ThreadPool.SetMaxThreads(10, 4);
         }
 
         public void StartMatrix()
         {
-            for (int i = 0; i < consoleWidth; i++)
+            var shuffeledColumnNumbers = GetShuffeledColumnNumbers(consoleWidth);
+
+            foreach (var columnNumber in shuffeledColumnNumbers)
             {
-                new Thread(() => MessageColumnMove(i, GetMessageHeight())).Start();
-                Thread.Sleep(1000);
+                ThreadPool.QueueUserWorkItem((object state) => MessageColumnMove(columnNumber, GetMessageHeight()));
+                Thread.Sleep(500);
+                ThreadPool.QueueUserWorkItem((object state) => MessageColumnMove(columnNumber, GetMessageHeight()));
             }
+        }
+
+        private List<int> GetShuffeledColumnNumbers(int consoleWidth)
+        {
+            var shuffeledColumnNumbers = new List<int>();
+            var valuesQuantity = 0;
+
+            while (valuesQuantity < consoleWidth)
+            {
+                var currValue = rand.Next(consoleWidth);
+
+                if (!shuffeledColumnNumbers.Contains(currValue))
+                {
+                    shuffeledColumnNumbers.Add(currValue);
+                    valuesQuantity++;
+                }
+
+            }
+
+            return shuffeledColumnNumbers;
         }
 
         private static void MessageColumnMove(int columnNumber, int messageHeight)
         {
-            for (int i = 0; i < consoleHeight - messageHeight; i++)
+            int i = 0;
+
+            while (true)
             {
                 PrintMessage(messageHeight, columnNumber, i, GetRandomChar);
 
-                Thread.Sleep(500);
+                Thread.Sleep(300);
 
                 PrintMessage(messageHeight, columnNumber, i, () => ' ');
+
+                i++;
+                if (i == consoleHeight - messageHeight)
+                {
+                    i = 0;
+                }
             }
         }
 
@@ -49,89 +79,38 @@ namespace Threads
             {
                 lock (lockObject)
                 {
+                    SetCharColor(j, messageHeight);
                     Console.SetCursorPosition(columnNumber, rowNumber + j);
                     Console.Write(getChar());
                 }
             }
         }
 
-        private static void GetCharColor(int color)
+        private static void SetCharColor(int charPosition, int lastPosition)
         {
-            //if (color = )
-            //    Console.ForegroundColor = ConsoleColor.White;
-            //else if (c2 == c1 - 1)
-            //    Console.ForegroundColor = ConsoleColor.Green;
-            //else
-            //    Console.ForegroundColor = ConsoleColor.DarkGreen;
-        }
-
-        private static int GetRandomColumn()
-        {
-
+            if (charPosition == lastPosition - 1)
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else if (charPosition == lastPosition - 2)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+            }
         }
 
         private static char GetRandomChar()
         {
-            string chars = "$%#@!*abcdefghijklmnopqrstuvwxyz1234567890?ABCDEFGHIJKLMNOPQRSTUVWXYZ^&";
-            Random rand = new Random();
             int num = rand.Next(0, chars.Length - 1);
             return chars[num];
         }
 
         private static int GetMessageHeight()
         {
-            Random rand = new Random();
-            return rand.Next(15);
+            return rand.Next(4, 10);
         }
-
-        /*
-        static object block = new object();
-
-        private void MessageCreate(int height)
-        {
-            for (int i = 0; i < height; i++)
-            {
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                Console.WriteLine(GetRandomChar());
-            }
-
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(GetRandomChar());
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine(GetRandomChar());
-
-            Console.ResetColor();
-        }
-
-        public void MessageMoveM()
-        {
-            lock (block)
-            {
-                int height = GetHeight();
-
-                for (int i = 0; i < Console.WindowHeight - height - 3; i++)
-                {
-                    MessageCreate(height);
-                    Thread.Sleep(500);
-                    Console.Clear();
-                    Console.SetCursorPosition(0, i + 1);//??
-                }
-            }
-        }
-
-        private static char GetRandomChar()
-        {
-            string chars = "$%#@!*abcdefghijklmnopqrstuvwxyz1234567890?ABCDEFGHIJKLMNOPQRSTUVWXYZ^&";
-            Random rand = new Random();
-            int num = rand.Next(0, chars.Length - 1);
-            return chars[num];
-        }
-
-        private static int GetHeight()
-        {
-            Random rand = new Random();
-            return rand.Next(15);
-        }
-        */
     }
 }
