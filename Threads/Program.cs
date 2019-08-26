@@ -18,7 +18,9 @@ namespace Threads
 
             var matrix = new Matrix();
 
-            matrix.Test();
+            matrix.StartMatrix();
+
+            //Matrix.MessageColumnMove(0, 6);
            
             //Console.WriteLine("BufferWidth : " + Console.BufferWidth);//80
             //Console.WriteLine("BufferHeight: " + Console.BufferHeight);//300

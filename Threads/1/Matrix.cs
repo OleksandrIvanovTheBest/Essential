@@ -8,48 +8,66 @@ namespace Threads
     internal class Matrix
     {
         const int size = 8;
-        private int X = Console.WindowWidth;
-        private int Y = Console.WindowHeight;
+        private static int consoleWidth = Console.WindowWidth;
+        private static int consoleHeight = Console.WindowHeight;
 
-        private int testY = 0;
-        private int testHeight = 6;
+
+
+        static object lockObject = new object();
 
         private char[] testMas = new char[6];
 
         public Matrix()
         {
-            for (int i = 0; i < testMas.Length; i++)
-            {
-                testMas[i] = GetRandomChar();
-            }
-            //0 - White
-            //1 - Green
-            //else DarkGreen
+           
         }
 
-        public void Test()
+        public void StartMatrix()
         {
-            //for (int i = 0; i < testHeight; i++)
-            //{
-                //дилнна строки
-                for (int j = 0; j < testMas.Length; j++)
+            for (int i = 0; i < consoleWidth; i++)
+            {
+                new Thread(() => MessageColumnMove(i, GetMessageHeight())).Start();
+                Thread.Sleep(1000);
+            }
+        }
+
+        private static void MessageColumnMove(int columnNumber, int messageHeight)
+        {
+            for (int i = 0; i < consoleHeight - messageHeight; i++)
+            {
+                PrintMessage(messageHeight, columnNumber, i, GetRandomChar);
+
+                Thread.Sleep(500);
+
+                PrintMessage(messageHeight, columnNumber, i, () => ' ');
+            }
+        }
+
+        private static void PrintMessage(int messageHeight, int columnNumber, int rowNumber, Func<char> getChar)
+        {
+            for (int j = 0; j < messageHeight; j++)
+            {
+                lock (lockObject)
                 {
-                    GetCharColor(j);
-                    Console.SetCursorPosition(0, testY + j);
-                    Console.Write(GetRandomChar());
-                    Thread.Sleep(300);
+                    Console.SetCursorPosition(columnNumber, rowNumber + j);
+                    Console.Write(getChar());
                 }
-            //}
+            }
         }
 
         private static void GetCharColor(int color)
         {
-            if (color = )
-                Console.ForegroundColor = ConsoleColor.White;
-            else if (c2 == c1 - 1)
-                Console.ForegroundColor = ConsoleColor.Green;
-            else
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
+            //if (color = )
+            //    Console.ForegroundColor = ConsoleColor.White;
+            //else if (c2 == c1 - 1)
+            //    Console.ForegroundColor = ConsoleColor.Green;
+            //else
+            //    Console.ForegroundColor = ConsoleColor.DarkGreen;
+        }
+
+        private static int GetRandomColumn()
+        {
+
         }
 
         private static char GetRandomChar()
@@ -58,6 +76,12 @@ namespace Threads
             Random rand = new Random();
             int num = rand.Next(0, chars.Length - 1);
             return chars[num];
+        }
+
+        private static int GetMessageHeight()
+        {
+            Random rand = new Random();
+            return rand.Next(15);
         }
 
         /*
