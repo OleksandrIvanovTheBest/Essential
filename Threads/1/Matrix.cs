@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Threads
 {
@@ -20,16 +21,20 @@ namespace Threads
             ThreadPool.SetMaxThreads(10, 4);
         }
 
-        public void StartMatrix()
+        public List<Task> StartMatrix()
         {
+            List<Task> tasks = new List<Task>();
+
             var shuffeledColumnNumbers = GetShuffeledColumnNumbers(consoleWidth);
 
             foreach (var columnNumber in shuffeledColumnNumbers)
             {
-                ThreadPool.QueueUserWorkItem((object state) => MessageColumnMove(columnNumber, GetMessageHeight()));
-                Thread.Sleep(500);
-                ThreadPool.QueueUserWorkItem((object state) => MessageColumnMove(columnNumber, GetMessageHeight()));
+                tasks.Add(new Task(() => MessageColumnMove(columnNumber, GetMessageHeight())));
+                tasks.Add(new Task(() => Thread.Sleep(500)));
+                tasks.Add(new Task(() => MessageColumnMove(columnNumber, GetMessageHeight())));
             }
+
+            return tasks;
         }
 
         private List<int> GetShuffeledColumnNumbers(int consoleWidth)
