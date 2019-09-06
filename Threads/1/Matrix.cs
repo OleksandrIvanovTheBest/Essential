@@ -29,11 +29,10 @@ namespace Threads
 
             foreach (var columnNumber in shuffeledColumnNumbers)
             {
-                tasks.Add(new Task(() => MessageColumnMove(columnNumber, GetMessageHeight())));
-                tasks.Add(new Task(() => Thread.Sleep(500)));
-                tasks.Add(new Task(() => MessageColumnMove(columnNumber, GetMessageHeight())));
+                tasks.Add(Task.Run(() => MessageColumnMove(columnNumber, GetMessageHeight())));
+                tasks.Add(Task.Run(() => MessageColumnMove(columnNumber, GetMessageHeight())));
             }
-
+            
             return tasks;
         }
 
